@@ -72,7 +72,12 @@ const makeCycler = function(array){
   }
 }
 
-const curry = undefined;
+const curry = function(funcName,argument){
+  return function(argument1,argument2){
+    return funcName(argument,argument1,argument2);
+  }
+}
+
 const compose = undefined;
 
 exports.makeConstant=makeConstant;

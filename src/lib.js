@@ -58,7 +58,20 @@ const makeFiboGenerator = function(num2,num1){
     return result;
   }
 }
-const makeCycler = undefined;
+
+const makeCycler = function(array){
+  let copiedArray = array.slice()
+  let lengthOfArray = copiedArray.length;
+  let index = 0;
+  return function(){
+    if(index == copiedArray.length){
+      index = 0;
+    }
+    index++;
+    return copiedArray[index-1];
+  }
+}
+
 const curry = undefined;
 const compose = undefined;
 

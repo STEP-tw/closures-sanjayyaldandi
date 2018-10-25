@@ -33,7 +33,31 @@ const makeDeltaTracker = function(number){
   }
 }
 
-const makeFiboGenerator = undefined;
+const makeFiboGenerator = function(num2,num1){
+  let firstNum = num1;
+  let secondNum = num2;
+
+  if(secondNum < firstNum){
+    firstNum = num2;
+    secondNum = num1;
+  }
+
+  if(num1 == undefined){
+    firstNum = 0;
+  }
+
+  if(num2 == undefined){
+    secondNum = 1;
+  }
+  let sum = 0;
+  return function(){
+    result = firstNum;
+    sum = firstNum + secondNum;
+    firstNum = secondNum;
+    secondNum = sum;
+    return result;
+  }
+}
 const makeCycler = undefined;
 const curry = undefined;
 const compose = undefined;

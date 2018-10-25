@@ -11,12 +11,28 @@ const makeCounterFromN = function(number){
 }
 
 const makeCounterFromZero = function(){
-  let number = 0;
+  let count = 0;
   return function(){
-    return number++;
+    return count++;
   }
 }
-const makeDeltaTracker = undefined;
+
+const makeDeltaTracker = function(number){
+  let tracker = {};
+  tracker.old = number;
+  tracker.delta = 0;
+  tracker.new = number;
+  return function(deltaNum){
+    if(deltaNum == undefined){
+      deltaNum = 0;
+    }
+    tracker.delta = deltaNum;
+    tracker.old = tracker.new;
+    tracker.new = tracker.old + deltaNum;
+    return tracker;
+  }
+}
+
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
 const curry = undefined;

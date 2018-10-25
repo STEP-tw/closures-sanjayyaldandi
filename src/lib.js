@@ -10,7 +10,12 @@ const makeCounterFromN = function(number){
   }
 }
 
-const makeCounterFromZero = undefined;
+const makeCounterFromZero = function(){
+  let number = 0;
+  return function(){
+    return number++;
+  }
+}
 const makeDeltaTracker = undefined;
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;

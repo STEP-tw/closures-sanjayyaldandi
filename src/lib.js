@@ -11,10 +11,7 @@ const makeCounterFromN = function(number){
 }
 
 const makeCounterFromZero = function(){
-  let count = 0;
-  return function(){
-    return count++;
-  }
+  return makeCounterFromN(0);
 }
 
 const makeDeltaTracker = function(number){
@@ -36,17 +33,14 @@ const makeDeltaTracker = function(number){
 const makeFiboGenerator = function(num2,num1){
   let firstNum = num1;
   let secondNum = num2;
-
   if(secondNum < firstNum){
     firstNum = num2;
     secondNum = num1;
   }
-
-  if(num1 == undefined){
+  if(!num1){
     firstNum = 0;
   }
-
-  if(num2 == undefined){
+  if(!num2){
     secondNum = 1;
   }
   let sum = 0;
@@ -60,7 +54,7 @@ const makeFiboGenerator = function(num2,num1){
 }
 
 const makeCycler = function(array){
-  let copiedArray = array.slice()
+  let copiedArray = array.slice();
   let lengthOfArray = copiedArray.length;
   let index = 0;
   return function(){

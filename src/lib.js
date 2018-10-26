@@ -15,18 +15,9 @@ const makeCounterFromZero = function(){
 }
 
 const makeDeltaTracker = function(number){
-  let tracker = {};
-  tracker.old = number;
-  tracker.delta = 0;
-  tracker.new = number;
-  return function(deltaNum){
-    if(deltaNum == undefined){
-      deltaNum = 0;
-    }
-    tracker.delta = deltaNum;
-    tracker.old = tracker.new;
-    tracker.new = tracker.old + deltaNum;
-    return tracker;
+    return function(deltaNum = 0){
+    number = number + deltaNum;
+    return {old:number-deltaNum,delta:deltaNum,new:number};
   }
 }
 
@@ -53,16 +44,17 @@ const makeFiboGenerator = function(num2,num1){
   }
 }
 
+const copyArray = function(value){
+  return value;
+}
+
 const makeCycler = function(array){
-  let copiedArray = array.slice();
+  let copiedArray = array.map(copyArray);
   let lengthOfArray = copiedArray.length;
   let index = 0;
   return function(){
-    if(index == copiedArray.length){
-      index = 0;
-    }
-    index++;
-    return copiedArray[index-1];
+    index = index%copiedArray.length;
+    return copiedArray[index++];
   }
 }
 
